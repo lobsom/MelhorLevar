@@ -15,6 +15,6 @@ import com.gomesmr.melhorlevar.domain.model.Produto;
  *
  */
 public interface ProdutoRepository extends JpaRepository <Produto, Long>{
-	
+	List <Produto> findByGtin(Long gtin);
 
 }

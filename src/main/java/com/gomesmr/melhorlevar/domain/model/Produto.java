@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.gomesmr.melhorlevar.api.dto.ProdutoResponse;
+
 /**
  * @author Marcelo Gomes
  *
@@ -39,8 +41,7 @@ public class Produto {
 	 * @param pack
 	 * 
 	 */
-	public Produto(Long id, String descricao, String marca, Double preco, Integer quantidade, String unidade, Integer pack, Long gtin) {
-		this.id = id;
+	public Produto(String descricao, String marca, Double preco, Integer quantidade, String unidade, Integer pack, Long gtin) {
 		this.descricao = descricao;
 		this.marca = marca;
 		this.preco = preco;
@@ -50,15 +51,29 @@ public class Produto {
 		this.gtin = gtin;
 	}
 	
+	/**
+	 * Razão: cálculo que permite a comparação dos produtos (a kind of)</br>
+	 * Na verdade a razão seria um valor menor, igual ou maior que 1
+	 * @return Double - Valor utilizado na construção da razão
+	 */
 	public Double razao() {
 		return preco/(quantidade*pack);
 	}
+	
+	/**
+	 * Retorna uma instância do Produto com somente os campos que serão exibidos ao usuário
+	 * @return ProdutoResponse
+	 */
+	public ProdutoResponse resposta() {
+		return new ProdutoResponse(this.id, this.descricao, this.marca, this.preco, this.gtin);
+		}
 
 	/**
-	 * @param ean
+	 * Construtor a partir do gtin
+	 * @param gtin
 	 */
-	public Produto(Long id) {
-		this.id = id;
+	public Produto(Long gtin) {
+		this.id = gtin;
 	}
 
 	/**

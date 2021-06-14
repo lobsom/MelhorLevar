@@ -3,6 +3,8 @@
  */
 package com.gomesmr.melhorlevar.api.dto;
 
+import com.gomesmr.melhorlevar.domain.model.Produto;
+
 /**
  * @author Marcelo Gomes
  *
@@ -16,25 +18,10 @@ public class ProdutoRequest {
 	private Integer pack;
 	private Long gtin;
 	
-	/**
-	 * @param descricao
-	 * @param marca
-	 * @param preco
-	 * @param quantidade
-	 * @param unidade
-	 * @param pack
-	 * @param gtin
-	 */
-	public ProdutoRequest(String descricao, String marca, Double preco, Integer quantidade, String unidade,
-			Integer pack, Long gtin) {
-		this.descricao = descricao;
-		this.marca = marca;
-		this.preco = preco;
-		this.quantidade = quantidade;
-		this.unidade = unidade;
-		this.pack = pack;
-		this.gtin = gtin;
+	public Produto criarNovoProduto() {
+		return new Produto(this.descricao, this.marca, this.preco, this.quantidade, this.unidade, this.pack, this.gtin);
 	}
+ 
 	/**
 	 * @return the descricao
 	 */

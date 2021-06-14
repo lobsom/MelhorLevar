@@ -34,4 +34,10 @@ public class ProdutoService {
 			return p2;
 		else return null;
 	}
+	
+	public Produto criar(Produto produto) {
+		return produtoRepository.save(produto);
+	}
+	
+	
 }

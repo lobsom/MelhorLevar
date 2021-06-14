@@ -14,13 +14,18 @@ public class ProdutoResponse {
 	 * @param gtin
 	 */
 	public ProdutoResponse(Long id, String descricao, String marca, Double preco, Long gtin) {
-		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.marca = marca;
 		this.preco = preco;
 		this.gtin = gtin;
 	}
+	
+	public ProdutoResponse(Long gtin) {
+		this.gtin = gtin;
+	}
+	
+	
 	/**
 	 * @return the id
 	 */

@@ -3,9 +3,7 @@
  */
 package com.gomesmr.melhorlevar.api.controller;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gomesmr.melhorlevar.api.dto.ProdutoRequest;
 import com.gomesmr.melhorlevar.api.dto.ProdutoResponse;
 import com.gomesmr.melhorlevar.domain.model.Produto;
 import com.gomesmr.melhorlevar.domain.repository.ProdutoRepository;
@@ -46,16 +45,21 @@ public class ProdutoController {
 	 * @return produto gravado no BD
 	 */
 	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public Produto entradaProduto(@RequestBody Produto produto) {
-		return produtoRepository.save(produto);
+	public ResponseEntity<ProdutoResponse> entradaProduto(@RequestBody ProdutoRequest produtoRequest) {
+		Produto produto = produtoRequest.criarNovoProduto();
+		produtoService.criar(produto);
+		
+		ProdutoResponse retornoProduto = produto.resposta();
+		return ResponseEntity.status(HttpStatus.CREATED).body(retornoProduto);
 	}
 	
 	@GetMapping("/melhorproduto/{idP1}/{idP2}")
-	private ResponseEntity<Produto> verificarVantagem (@PathVariable Long idP1, @PathVariable Long idP2) {
+	private ResponseEntity<ProdutoResponse> verificarVantagem (@PathVariable Long idP1, @PathVariable Long idP2) {
 		Produto produto = produtoService.melhorLevar(idP1, idP2);
-	
-			return ResponseEntity.ok(produto);
+		ProdutoResponse retornoProduto = produto.resposta();
+		
+		return ResponseEntity.status(HttpStatus.OK).body(retornoProduto);
+			
 
 	}
 	
@@ -68,7 +72,7 @@ public class ProdutoController {
 	public List<Produto> listar() {
 
 		return produtoRepository.findAll().stream()
-			    .map(e -> new Produto(e.getId(), e.getDescricao(), e.getMarca(), e.getPreco(), e.getQuantidade(), e.getUnidade(), e.getPack(), e.getGtin()))
+			    .map(e -> new Produto(e.getDescricao(), e.getMarca(), e.getPreco(), e.getQuantidade(), e.getUnidade(), e.getPack(), e.getGtin()))
 			    .collect(Collectors.toList());
 
 	}

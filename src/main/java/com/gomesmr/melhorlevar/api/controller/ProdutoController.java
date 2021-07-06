@@ -51,12 +51,12 @@ public class ProdutoController {
 		return produtoRepository.save(produto);
 	}
 	
-	@GetMapping("/melhorproduto/{idP1}/{idP2}")
+	@GetMapping("/{idP1}/{idP2}")
 	private ResponseEntity<Produto> verificarVantagem (@PathVariable Long idP1, @PathVariable Long idP2) {
 		Produto produto = produtoService.melhorLevar(idP1, idP2);
 	
 			return ResponseEntity.ok(produto);
-
+			
 	}
 	
 	

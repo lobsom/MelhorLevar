@@ -3,20 +3,16 @@
  */
 package com.gomesmr.melhorlevar.domain.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.gomesmr.melhorlevar.domain.model.Produto;
-
+import com.gomesmr.melhorlevar.domain.model.Cosmos;
 
 /**
  * @author Marcelo Gomes
  *
  */
 @Repository
-public interface ProdutoRepository extends JpaRepository <Produto, Long>{
-	
+public interface CosmosRepository extends JpaRepository <Cosmos, Long> {
 
 }

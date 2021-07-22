@@ -1,0 +1,53 @@
+{
+	"description": "CAPPUCCINO SOLÚVEL TRADICIONAL MELITTA LATA 200G",
+	"gtin": 7891021007078,
+	"thumbnail": "https://cdn-cosmos.bluesoft.com.br/products/7891021007078",
+	"width": null,
+	"height": null,
+	"length": null,
+	"net_weight": null,
+	"gross_weight": null,
+	"created_at": "2014-04-24T11:07:34.000-03:00",
+	"updated_at": "2021-07-15T12:57:41.000-03:00",
+	"price": "R$ 5,90 a R$ 12,90",
+	"avg_price": 9.4,
+	"max_price": 12.9,
+	"min_price": 5.9,
+	"gtins": [
+		{
+			"gtin": 27891021007072,
+			"commercial_unit": {
+				"type_packaging": "Caixa",
+				"quantity_packaging": 24,
+				"ballast": 0,
+				"layer": 0
+			}
+		},
+		{
+			"gtin": 7891021007078,
+			"commercial_unit": {
+				"type_packaging": "Unidade",
+				"quantity_packaging": 1,
+				"ballast": null,
+				"layer": null
+			}
+		}
+	],
+	"origin": "COSMOS",
+	"barcode_image": "https://api.cosmos.bluesoft.com.br/products/barcode/BFC60110479A1EB061E7E6E1A5D2BD87.png",
+	"brand": {
+		"name": "MELITTA",
+		"picture": "https://cdn-cosmos.bluesoft.com.br/brands/brand_melitta"
+	},
+	"ncm": {
+		"code": "21011200",
+		"description": "Preparações à base de extratos, essências ou concentrados ou à base de café",
+		"full_description": "Produtos das indústrias alimentares; bebidas, líquidos alcoólicos e vinagres; fumo (tabaco) e seus sucedâneos misturados - Carnes e miudezas, comestíveis, salgadas ou em salmoura, secas ou defumadas (fumadas); farinhas e pós, comestíveis, de carnes ou de miudezas. - Carnes da espécie suína: - Extratos, essências e concentrados de café e preparações à base destes extratos, essências ou concentrados ou à base de café: - Preparações à base de extratos, essências ou concentrados ou à base de café"
+	},
+	"cest": {
+		"id": 2172,
+		"code": "1710900",
+		"description": "Preparações em pó para cappuccino e similares, em embalagens de conteúdo inferior ou igual a 500 g",
+		"parent_id": 1671
+	}
+}

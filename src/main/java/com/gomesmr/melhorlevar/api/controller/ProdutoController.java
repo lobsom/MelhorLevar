@@ -31,12 +31,10 @@ import com.gomesmr.melhorlevar.domain.service.ProdutoService;
 @RestController
 @RequestMapping("/melhorlevar")
 public class ProdutoController {
-	private final ProdutoRepository produtoRepository;
 	private final ProdutoService produtoService;
 	
 	@Autowired
-	ProdutoController(ProdutoRepository produtoRepository, ProdutoService produtoService){
-		this.produtoRepository = produtoRepository;
+	ProdutoController(ProdutoService produtoService){
 		this.produtoService = produtoService;
 	}
 	
@@ -48,7 +46,7 @@ public class ProdutoController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Produto entradaProduto(@RequestBody Produto produto) {
-		return produtoRepository.save(produto);
+		return produtoService.novoProduto(produto);
 	}
 	
 	@GetMapping("/{idP1}/{idP2}")
@@ -65,11 +63,10 @@ public class ProdutoController {
 	 * @return Lista de Produtos gravados no sistema
 	 */
 	@GetMapping
-	public List<Produto> listar() {
+	public List<ProdutoResponse> listar() {
+		return produtoService.listarProdutos();
+		
 
-		return produtoRepository.findAll().stream()
-			    .map(e -> new Produto(e.getId(), e.getDescricao(), e.getMarca(), e.getPreco(), e.getQuantidade(), e.getUnidade(), e.getPack(), e.getGtin()))
-			    .collect(Collectors.toList());
 
 	}
 	
